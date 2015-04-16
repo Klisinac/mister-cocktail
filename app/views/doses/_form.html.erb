@@ -1,0 +1,20 @@
+<%= form_for [@cocktail, @dose] do |f| %>
+
+<% if @cocktail.errors.any? %>
+ <div id="error_explanation">
+   <ul>
+   <% @dose.errors.full_messages.each do |message| %>
+     <li><%= message %></li>
+   <% end %>
+   </ul>
+ </div>
+<% end %>
+
+<%= f.label :ingredient_id, "Ingredient" %>
+<%= f.select :ingredient_id, Ingredient.all.collect {|i| [i.name, i.id]} %>
+
+<%= f.label :description %>
+<%= f.text_field :description %>
+
+<%= f.submit %>
+<% end %>
